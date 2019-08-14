@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Video hosting demo</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div class="container mt-3">
+    <div class="embed-responsive embed-responsive-16by9">
+        <video autoplay="autoplay" controls>
+            <source th:src="@{/../api/videos/{name}(name=${videoName})}" type="video/mp4">
+        </video>
+    </div>
+</div>
+</body>
+</html>

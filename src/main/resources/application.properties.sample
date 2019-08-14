@@ -1,0 +1,7 @@
+
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.file-size-threshold=2KB
+spring.servlet.multipart.max-file-size=2000MB
+spring.servlet.multipart.max-request-size=2150MB
+
+video.location=C:\\videos
