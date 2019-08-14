@@ -1,5 +1,7 @@
-# video-hosting-demo
-Video hosting demo using Spring Boot and WebFlux
+# video-hosting-demo  
+Video hosting demo using Spring Boot and WebFlux  
+Demo is working but it's still in progress  
+Inspired by this post: https://melgenek.github.io/spring-video-service  
 
 ## Installation
 1. Clone repository
@@ -20,4 +22,4 @@ video.location=/home/admin/videos
 ```
 mvn spring-boot:run
 ```
-5. Go to **localhost:8080** in browser to see home page of application
+5. Go to [**localhost:8080**](http://localhost:8080) in browser to see home page of application
