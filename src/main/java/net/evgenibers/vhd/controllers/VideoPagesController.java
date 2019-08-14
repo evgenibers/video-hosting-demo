@@ -3,7 +3,6 @@ package net.evgenibers.vhd.controllers;
 import lombok.extern.log4j.Log4j2;
 import net.evgenibers.vhd.annotations.ValidVideoFile;
 import net.evgenibers.vhd.annotations.ValidVideoFileName;
-import net.evgenibers.vhd.domain.Video;
 import net.evgenibers.vhd.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

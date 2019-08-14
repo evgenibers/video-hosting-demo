@@ -1,7 +1,6 @@
 package net.evgenibers.vhd.utils;
 
 import java.io.File;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
