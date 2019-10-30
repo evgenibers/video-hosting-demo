@@ -37,7 +37,7 @@ public class VideoController {
 	@GetMapping("/{name}")
 	public ResponseEntity<ResourceRegion> getVideo(@PathVariable @ValidVideoFileName String name,
 			@RequestHeader HttpHeaders headers) {
-		log.info("getVideo: name = {}", name);
+		log.info("getVideo: name = {}, range = {}", name, headers.getRange());
 		return videoService.getVideo(name, headers);
 	}
 
