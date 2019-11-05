@@ -5,12 +5,31 @@
     <title>Video hosting demo</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script>
+        function deleteVideo(name) {
+            $.ajax({
+                url: "./api/videos/" + name,
+                type: "DELETE",
+                success: function(result) {
+                    console.log("DELETED: " + name);
+                    window.location.href=window.location.href;
+                },
+                error: function (request, status, error) {
+                    console.log("ERROR: " + name);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="container my-3">
     <ul class="list-group" th:object="${videos}" id="videos">
         <li class="list-group-item" th:each="video :${videos}">
             <a th:href="${video.getName()}" th:text="${video.getName()}"></a>
+            <button class="float-right" type="button"
+                    th:data="${video.getName()}"
+                    th:onclick="deleteVideo(this.getAttribute('data'))">X</button>
         </li>
     </ul>
     <br>
