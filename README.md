@@ -1,4 +1,4 @@
-# video-hosting-demo  
+# Video Hosting Demo  
 Video hosting demo using Spring Boot and WebFlux  
 Demo is working but it's still in progress  
 Inspired by this post: https://melgenek.github.io/spring-video-service  
