@@ -23,4 +23,5 @@ video.location=/home/admin/videos
 mvn spring-boot:run
 ```
 5. Go to [**localhost:8080**](http://localhost:8080) in browser to see home page of application  
+  
 <kbd>![Oops!](img1.png)</kbd>   
