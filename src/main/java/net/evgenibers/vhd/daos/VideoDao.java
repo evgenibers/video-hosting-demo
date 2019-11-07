@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
  */
 @Service
 public class VideoDao { // TODO use paths instead of string concat
+
 	@Value("${video.location}")
 	private String videoLocation;
 
@@ -62,7 +63,8 @@ public class VideoDao { // TODO use paths instead of string concat
 		discFile.setReadable(true, false);
 		discFile.setExecutable(true, false);
 		discFile.setWritable(true, false);
-		return find(file.getOriginalFilename()).orElseThrow(() -> new RuntimeException("File not found"));
+		return find(file.getOriginalFilename())
+				.orElseThrow(() -> new RuntimeException("File not found"));
 	}
 
 	public boolean exists(String name) {

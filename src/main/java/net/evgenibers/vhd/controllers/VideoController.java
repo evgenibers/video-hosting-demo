@@ -1,8 +1,6 @@
 package net.evgenibers.vhd.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import net.evgenibers.vhd.annotations.ValidVideoFile;
-import net.evgenibers.vhd.annotations.ValidVideoFileName;
 import net.evgenibers.vhd.domain.Video;
 import net.evgenibers.vhd.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 @RequestMapping("/api/videos")
 public class VideoController {
+
 	private final VideoService videoService;
 
 	@Autowired
@@ -35,14 +34,13 @@ public class VideoController {
 	}
 
 	@GetMapping("/{name}")
-	public ResponseEntity<ResourceRegion> getVideo(@PathVariable @ValidVideoFileName String name,
-			@RequestHeader HttpHeaders headers) {
+	public ResponseEntity<ResourceRegion> getVideo(@PathVariable String name, @RequestHeader HttpHeaders headers) {
 		log.info("getVideo: name = {}, range = {}", name, headers.getRange());
 		return videoService.getVideo(name, headers);
 	}
 
 	@GetMapping("/{name}/full")
-	public ResponseEntity<UrlResource> getFullVideo(@PathVariable @ValidVideoFileName String name) {
+	public ResponseEntity<UrlResource> getFullVideo(@PathVariable String name) {
 		log.info("getFullVideo: name = {}", name);
 		return videoService.getFullVideo(name);
 	}
@@ -54,13 +52,13 @@ public class VideoController {
 	}
 
 	@PostMapping("")
-	public Video addVideo(@RequestParam("file") @ValidVideoFile MultipartFile file) {
+	public Video addVideo(@RequestParam("file") MultipartFile file) {
 		log.info("addVideo: fileName = {}", file.getOriginalFilename());
 		return videoService.addVideo(file);
 	}
 
 	@DeleteMapping("/{name}")
-	public void deleteVideo(@PathVariable @ValidVideoFileName String name) {
+	public void deleteVideo(@PathVariable String name) {
 		log.info("deleteVideo: name = {}", name);
 		videoService.deleteVideo(name);
 	}

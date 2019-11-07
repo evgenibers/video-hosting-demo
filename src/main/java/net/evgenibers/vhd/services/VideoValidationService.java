@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 @Service
 public class VideoValidationService {
+
 	private final VideoDao videoDao;
 
 	@Autowired
@@ -31,5 +32,10 @@ public class VideoValidationService {
 				&& !value.isEmpty()
 				&& value.length() <= 256
 				&& !StringUtils.containsAny(value, "\\", "/", "*", "?", "%");
+	}
+
+	public boolean isValidContentType(String contentType) {
+		return Objects.nonNull(contentType)
+				&& "video/mp4".equals(contentType);
 	}
 }

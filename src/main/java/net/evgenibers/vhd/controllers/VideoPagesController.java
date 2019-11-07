@@ -21,7 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @SuppressWarnings("unused")
 @RequestMapping("")
-public class VideoPagesController { // TODO implement delete video
+public class VideoPagesController {
+
 	private final VideoService videoService;
 
 	@Autowired

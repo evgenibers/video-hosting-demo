@@ -9,7 +9,9 @@ import java.util.Optional;
  * @author Eugene Bokhanov
  */
 public class FilenameUtils {
-	private FilenameUtils() {}
+
+	private FilenameUtils() {
+	}
 
 	/**
 	 * Get file extension.

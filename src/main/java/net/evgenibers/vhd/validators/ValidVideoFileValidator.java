@@ -17,6 +17,7 @@ import java.util.Objects;
  */
 @Component
 public class ValidVideoFileValidator implements ConstraintValidator<ValidVideoFile, MultipartFile> {
+
 	private final VideoValidationService videoValidationService;
 
 	@Autowired
@@ -28,6 +29,7 @@ public class ValidVideoFileValidator implements ConstraintValidator<ValidVideoFi
 	public boolean isValid(MultipartFile value, ConstraintValidatorContext context) {
 		return Objects.nonNull(value)
 				&& !value.isEmpty()
-				&& videoValidationService.isValidFilename(value.getOriginalFilename()); // TODO check file type
+				&& videoValidationService.isValidContentType(value.getContentType())
+				&& videoValidationService.isValidFilename(value.getOriginalFilename());
 	}
 }

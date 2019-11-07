@@ -1,6 +1,8 @@
 package net.evgenibers.vhd.services;
 
 import lombok.extern.log4j.Log4j2;
+import net.evgenibers.vhd.annotations.ValidVideoFile;
+import net.evgenibers.vhd.annotations.ValidVideoFileName;
 import net.evgenibers.vhd.daos.VideoDao;
 import net.evgenibers.vhd.domain.Video;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourceRegion;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,7 +25,9 @@ import java.util.List;
  */
 @Log4j2
 @Service
+@Validated
 public class VideoService {
+
 	@Value("${video.chunk.size:1000000}")
 	private long chunkSize;
 
@@ -33,7 +38,7 @@ public class VideoService {
 		this.videoDao = videoDao;
 	}
 
-	public ResponseEntity<UrlResource> getFullVideo(String name) {
+	public ResponseEntity<UrlResource> getFullVideo(@ValidVideoFileName String name) {
 		log.debug("getFullVideo: name = {}", name);
 		try {
 			UrlResource video = videoDao.findResource(name);
@@ -45,7 +50,7 @@ public class VideoService {
 		}
 	}
 
-	public ResponseEntity<ResourceRegion> getVideo(String name, HttpHeaders headers) {
+	public ResponseEntity<ResourceRegion> getVideo(@ValidVideoFileName String name, HttpHeaders headers) {
 		log.debug("getVideo: name = {}", name);
 		try {
 			UrlResource video = videoDao.findResource(name);
@@ -79,12 +84,12 @@ public class VideoService {
 		return videoDao.find();
 	}
 
-	public Video addVideo(MultipartFile file) {
+	public Video addVideo(@ValidVideoFile MultipartFile file) {
 		log.debug("addVideo: fileName = {}", file.getName());
 		return videoDao.add(file);
 	}
 
-	public void deleteVideo(String name) {
+	public void deleteVideo(@ValidVideoFileName String name) {
 		log.debug("deleteVideo: name = {}", name);
 		videoDao.delete(name);
 	}

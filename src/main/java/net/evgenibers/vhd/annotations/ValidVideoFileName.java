@@ -19,6 +19,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Constraint(validatedBy = ValidVideoFileNameValidator.class)
 public @interface ValidVideoFileName {
+
 	/**
 	 * Message string.
 	 *
